@@ -1,0 +1,28 @@
+{
+  "name": "wcc_6_meu_medico_favorito",
+  "version": "1.0.0",
+  "description": "New project using Node.js for create a API calls Meu Médico Favorito by DASA.\r For a week, WCC women will code an API to manage a database that contains a patient's favorite doctors.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flareis/WCC_6_meu_medico_favorito.git"
+  },
+  "author": "Flavia_Silva_dos_Reis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flareis/WCC_6_meu_medico_favorito/issues"
+  },
+  "homepage": "https://github.com/Flareis/WCC_6_meu_medico_favorito#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.12.0-alpha.1"
+  }
+}
