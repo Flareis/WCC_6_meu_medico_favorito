@@ -26,7 +26,24 @@ const getAllDoctors = async (req, res) => {
         }
 }
 
+const getDoctor = async (req, res) => {
+    const doctorId = req.params.id
+    try{
+        const doctor = await Doctor.findOne({
+            where: {id: doctorId}
+        });
+        if (doctor){
+            res.status(200).send(doctor)
+        } else {
+            res.status(404).send({message: `Médico não encontrado com o id ${doctorId}`})
+        }
+    } catch(error) {
+        res.status(500).send({ message: error.message})
+    }
+}
+
 module.exports = {
     createDoctor,
-    getAllDoctors
+    getAllDoctors,
+    getDoctor
 }
