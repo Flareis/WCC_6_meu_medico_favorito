@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 
-require("./models/Doctor.js");
+/*require("./models/Doctor.js");*/
 
 //Routes
 const index = require("./routes/index")

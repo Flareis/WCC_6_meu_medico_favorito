@@ -11,10 +11,10 @@ const Doctor = database.define("Doctor",{
     name: {
         type: DataTypes.STRING,
     },
-    CRM: {
+    crm: {
         type: DataTypes.STRING,
     },
-    speciality:{
+    specialty:{
         type: DataTypes.STRING,
     },
     clinic:{

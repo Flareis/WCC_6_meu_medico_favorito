@@ -1,9 +1,9 @@
 const Doctor = require("../models/Doctor")
 
 const createDoctor = async (req, res) => {
-    const { name, CRM, speciality, clinic, phone, favorite } = req.body
+    const { name, crm, specialty, clinic, phone, favorite } = req.body
     try {
-        const doctor = await Doctor.create({ name, CRM, speciality, clinic, phone, favorite });
+        const doctor = await Doctor.create({ name, crm, specialty, clinic, phone, favorite });
         console.log(`Medico ${doctor.name} criado`);
         res.status(201).send(doctor)
     } catch (error) {
@@ -45,9 +45,9 @@ const getDoctor = async (req, res) => {
 //Função de entrada
 const updateDoctor = async(req, res) =>{
     const doctorId = req.params.id
-    const {name, CRM, speciality, clinic, phone, favorite  } = req.body // desestruturação
+    const {name, crm, specialty, clinic, phone, favorite  } = req.body // desestruturação
     try {
-        const  rowsUpdated = await Doctor.update({ name, CRM, speciality, clinic, phone, favorite},{
+        const  rowsUpdated = await Doctor.update({ name, crm, specialty, clinic, phone, favorite},{
         where: {id: doctorId }
     });
     if (rowsUpdated && rowsUpdated[0] > 0){
