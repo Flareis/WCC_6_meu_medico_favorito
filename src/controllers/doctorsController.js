@@ -50,9 +50,8 @@ const updateDoctor = async(req, res) =>{
         const  rowsUpdated = await Doctor.update({ name, CRM, speciality, clinic, phone, favorite},{
         where: {id: doctorId }
     });
-    if (rowsUpdated && rowsUpdated > 0){
-
-        res.status(200).send({message: `${rowsUpdated[0]} médicos foram alterados.`})
+    if (rowsUpdated && rowsUpdated[0] > 0){
+        res.status(200).send({message: `O médico com id: ${doctorId} foi alterado.`})
     } else {
         res.status(404).send({ message: `Não foi encontrado o médido com id: ${doctorId}`})
     } 
@@ -60,11 +59,46 @@ const updateDoctor = async(req, res) =>{
      res.status(500).send ({message: error.message})
     }  
 }
-    
+ 
+// Criando a função patch
+const updateFavorite = async (req, res) => {
+    const doctorId = req.params.id
+    const favorite = req.body.favorite
+    try{
+        const updatedRows = await Doctor.update ({favorite}, {where: {id: doctorId}
+        });
+        if (updatedRows && updatedRows[0] > 0 ){
+            res.status(200).send({message: `${updatedRows[0]} médico foi atualizado com sucesso.`})
+        } else { 
+            res.status(404).send({message: `Médico com o id ${doctorId} não foi encontrado.`})
+        }
+    } catch (error){
+        res.status(500).send({message: error.message})
+    }
+}
 
+//Deletando um médico cadastrato
+const deleteDoctor = async (req, res) => {
+    const doctorId = req.params.id
+    try{
+        const rowDeleted = await Doctor.destroy ({where: {id: doctorId}})
+        if (rowDeleted){
+            res.status(200).send({message: `${rowDeleted} médico deletado com sucesso.`})
+        } else {
+            res.status(404).send({ message: `Médico com o id: ${doctorId} não encontrado.`})
+        }
+    } catch(error){
+        res.status(500).send({message: error.message})
+    }
+}
+
+
+// Exportando as rotas
 module.exports = {
     createDoctor,
     getAllDoctors,
     getDoctor,
-    updateDoctor
+    updateDoctor,
+    updateFavorite,
+    deleteDoctor
 }

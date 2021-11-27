@@ -14,4 +14,10 @@ router.get("/:id", controller.getDoctor)
 //Rota de put que altera a estrutura do Doctor
 router.put("/:id", controller.updateDoctor)
 
+//Rota patch para modificar uma informação apenas
+router.patch("/:id/favorite", controller.updateFavorite)
+
+//Rota para deletar um médico específico
+router.delete("/:id/doctor", controller.deleteDoctor)
+
 module.exports = router;
